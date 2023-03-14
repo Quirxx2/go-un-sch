@@ -1,0 +1,32 @@
+type: google.api.Service
+config_version: 3
+
+http:
+  rules:
+    - selector: certs.CertsService.GetCertificate
+      get: "/certificate/{id}"
+    - selector: certs.CertsService.AddTemplate
+      post: "/template"
+      body: "*"
+    - selector: certs.CertsService.GetTemplate
+      get: "/template/{name}"
+    - selector: certs.CertsService.DeleteTemplate
+      delete: "/template/{name}"
+    - selector: certs.CertsService.ListTemplates
+      get: "/templates"
+    - selector: certs.CertsService.DeleteCertificate
+      delete: "/certificate/{id}"
+    - selector: certs.CertsService.UpdateCertificate
+      patch: "/certificate/{id}"
+      body: "*"
+    - selector: certs.CertsService.UpdateTemplate
+      patch: "/template/{name}"
+      body: "*"
+    - selector: certs.CertsService.TestTemplate
+      post: "/template/{name}/test"
+      body: "*"
+    - selector: certs.CertsService.GetCertificateLink
+      get: "/certificate/{id}/link"
+    - selector: certs.CertsService.AddCertificate
+      post: "/certificate"
+      body: "*"

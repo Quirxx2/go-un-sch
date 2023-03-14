@@ -1,0 +1,12 @@
+services:
+  certs:
+    user: ${HOST_UID:?"Exoprt HOST_UID, HOST_UID=$(id -u):$(id -g)"}
+    volumes:
+      - ./tmp/:/out/:rw
+    environment:
+      - DOCKER=true
+  db:
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=registry

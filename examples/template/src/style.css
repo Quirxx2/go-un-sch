@@ -1,0 +1,95 @@
+@import "./page.css";
+
+body {
+    margin: 10mm;
+    border: 1mm solid #79d4fd;
+    height:188mm;
+    width: 275mm;
+}
+
+.border-pattern {
+    position:absolute;
+    left: 14mm;
+    top: 4mm;
+    height: 200mm;
+    width: 267mm;
+    border: 1mm solid #79d4fd;
+    background-color: #e3f6ff;
+    /* http://www.heropatterns.com/ */
+    background-image: url(data-url:./img/church-on-sunday.svg);
+}
+
+.content{
+    position: absolute;
+    left: 10mm;
+    top: 10mm;
+    height: 178mm;
+    width: 245mm;
+    border: 1mm solid #79d4fd;
+    background: white;
+}
+
+.inner-content{
+    border: 1mm solid #79d4fd;
+    margin: 4mm;
+    padding: 5mm;
+    height: 158mm;
+    text-align: center;
+}
+
+h1 {
+    text-transform: uppercase;
+    font-size: 32pt;
+    margin-bottom: 0;
+}
+
+h2 {
+    font-size: 24pt;
+    margin-top: 0;
+    padding-bottom: 1mm;
+    display: inline-block;
+    border-bottom: 1mm solid #79d4fd;
+}
+
+h2::after {
+    content: "";
+    display: block;
+    padding-bottom: 4mm;
+    border-bottom: 1mm solid #79d4fd;
+}
+
+h3 {
+    font-size: 18pt;
+    margin-bottom: 0;
+    /* margin-top: 10mm; */
+}
+
+p {
+    font-size: 16pt;
+}
+
+@font-face {
+    font-family: Corinthia;
+    /* https://fonts.google.com/specimen/Corinthia */
+    src: url(data-url:./font/Corinthia-Regular.ttf);
+}
+.inner-content > p:last-of-type {
+    font-family: Corinthia;
+    font-size: 26pt;
+}
+
+.qr {
+    position: absolute;
+    right: 5mm;
+    top: 5mm;
+}
+
+.link {
+    position: absolute;
+    right: 10mm;
+    bottom: 5mm;
+}
+
+.link p {
+    font-size: 10pt
+}

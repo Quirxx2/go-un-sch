@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  certs:
+    image: certs
+    build: .
+    ports:
+      - 8080:8080
+    depends_on:
+      db:
+        condition: service_healthy
+      gotenberg:
+        condition: service_started
+  db:
+    image: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    volumes:
+      - ./postgres/init/:/docker-entrypoint-initdb.d/
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}"]
+      interval: 2s
+      timeout: 2s
+      retries: 10
+
+  gotenberg:
+    image: gotenberg/gotenberg:7
+    ports:
+      - 3000:3000

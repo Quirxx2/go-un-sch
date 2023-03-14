@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en"> 
+    <head>
+        <meta charset="utf-8"/>
+        <title>Certificate Template Example</title>
+    </head>
+    <body>
+        <style>
+            @import "./style.css";
+        </style> 
+        <script type="module">
+            import value from "./script.js";
+        </script>
+        <div class="border-pattern">
+            <div class="content">
+                <div class="inner-content">
+                    <h1>Certificate</h1>
+                    <h2>of Completion</h2>
+                    <h3>This Is To Certify That:</h3>
+                    <p>{{ .Cert.Student }}</p>
+                    <h3>Has Completed</h3>
+                    <p>{{ .Cert.Course }}</p>
+                    <h3>On</h3>
+                    <p>{{ .Cert.IssueDate }}</p>
+                    <p>{{ .Cert.Mentors }}</p>
+                    <div class="qr">
+                        <img src="data:image/png;base64,{{ .Qr }}"/>
+                    </div>
+                    <div class="link">
+                        <p>{{ .Link }}</p>    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

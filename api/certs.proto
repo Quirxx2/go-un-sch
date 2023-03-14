@@ -1,0 +1,99 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+import "google/api/httpbody.proto";
+
+package certs;
+
+option go_package = "gitlab.com/DzmitryYafremenka/golang-united-school-certs/api";
+
+service CertsService {
+    rpc AddTemplate(AddTemplateRequest) returns (google.protobuf.Empty) {}
+    rpc GetTemplate(GetTemplateRequest) returns (GetTemplateResponse) {}
+    rpc DeleteTemplate(DeleteTemplateRequest) returns (google.protobuf.Empty) {}
+    rpc ListTemplates(google.protobuf.Empty) returns (ListTemplatesResponse) {}
+    rpc DeleteCertificate(DeleteCertificateRequest) returns (google.protobuf.Empty) {}
+    rpc UpdateTemplate(UpdateTemplateRequest) returns (google.protobuf.Empty) {}
+    rpc GetCertificate(GetCertificateRequest) returns (google.api.HttpBody) {}
+    rpc TestTemplate(TestTemplateRequest) returns (google.api.HttpBody) {}
+    rpc UpdateCertificate(UpdateCertificateRequest) returns (google.protobuf.Empty) {}
+    rpc AddCertificate(AddCertificateRequest) returns (AddCertificateResponse) {}
+    rpc GetCertificateLink(GetCertificateLinkRequest) returns (GetCertificateLinkResponse) {}
+}
+
+message AddTemplateRequest {
+    string name = 1;
+    string content = 2;
+}
+
+message GetTemplateRequest {
+    string name = 1;
+}
+
+message GetTemplateResponse {
+    string content = 1;
+}
+
+message DeleteTemplateRequest {
+    string name = 1;
+}
+
+message ListTemplatesResponse {
+    repeated string names = 1;
+}
+
+message DeleteCertificateRequest {
+    string id = 1;
+}
+
+message UpdateTemplateRequest {
+    string name = 1;
+    optional string NewName = 2;
+    optional string NewContent = 3;
+}
+
+message GetCertificateRequest {
+    string id = 1;
+}
+
+message TestTemplateRequest {
+    string name = 1;
+    TestCertificate certificate = 2;
+    
+    message TestCertificate {
+        string id = 1;
+        string student = 2;
+        string issueDate = 3;
+        string course = 4;
+        string mentors = 5;
+    }
+}
+
+message UpdateCertificateRequest {
+    string id = 1;
+    optional string NewTemplate = 2;
+    optional string NewStudent = 3;
+    optional string NewIssueDate = 4;
+    optional string NewCourse = 5;
+    optional string NewMentors = 6;
+}
+
+message AddCertificateRequest {
+    string templateName = 1;
+    string student = 2;
+    string issueDate = 3;
+    string course = 4;
+    string mentors = 5;
+}
+
+message AddCertificateResponse {
+    string id = 1;
+}
+
+message GetCertificateLinkRequest {
+    string id = 1;
+}
+
+message GetCertificateLinkResponse {
+    string link = 1;
+}
